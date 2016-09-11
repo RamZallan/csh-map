@@ -25,8 +25,8 @@
         }
 
         getResidents("3071", function (data) {
-            var parsed_data = JSON.parse(data);
-            console.log(parsed_data);
+            var parsed_data = JSON.parse(data.responseText);
+            console.log(parsed_data[0]);
         });
     </script>
 </body>
