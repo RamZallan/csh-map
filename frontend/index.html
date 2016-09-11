@@ -1,12 +1,33 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <html>
 
-    <head>
-        <title>CSH Map</title>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>CSH Floorplan</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
-    <body>
-        <h1>Lorem ipsum</h1>
-    </body>
+<body>
+   <h1>test</h1>
+    <script>
+        function getResidents(room, callback) {
+            url = "https://map.csh.rit.edu/api/get/" + room;
+            var request = new XMLHttpRequest();
+            request.open("GET", url, true);
+            request.onreadystatechange = function () {
+                console.log("GET State: " + request.readyState + " - Status: " + request.status);
+                if (request.readyState == 4 && request.status == 200) {
+                    callback(request);
+                }
+            }
+            request.send(null);
+        }
+
+        getResidents("3071", function (data) {
+            alert(data);
+        });
+    </script>
+</body>
 
 </html>
