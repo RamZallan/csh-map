@@ -55,7 +55,7 @@ function getResidents(room, callback) {
 function outputResidents(roomNum) {
     getResidents(roomNum, function (data) {
         var parsed_data = JSON.parse(data.responseText);
-        if (pased_data[1]) {
+        if (parsed_data[1]) {
             console.log(parsed_data[0] + '\n' + parsed_data[1]);
         } else if (parsed_data[0]) {
             console.log(parsed_data[0]);
