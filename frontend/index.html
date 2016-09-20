@@ -157,17 +157,13 @@
             var request = new XMLHttpRequest();
             request.open("GET", url, true);
             request.onreadystatechange = function () {
-                console.log("GET State: " + request.readyState + " - Status: " + request.status);
+                //console.log("GET State: " + request.readyState + " - Status: " + request.status);
                 if (request.readyState == 4 && request.status == 200) {
                     callback(request);
                 }
             }
             request.send(null);
         }
-//        getResidents("3071", function (data) {
-//            var parsed_data = JSON.parse(data.responseText);
-//            console.log(parsed_data[0]);
-//        });
     </script>
 </body>
 
