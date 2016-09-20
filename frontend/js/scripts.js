@@ -19,7 +19,7 @@ function nrhOrFish(id) {
     var bldg = id.match(regexBldg);
     var num = id.match(regexNum);
     if (bldg == "nrh") {
-        outputResidents(num.toString();
+        outputResidents(num.toString());
     } else if (bldg == "fish") {
         outputResidents("F%20" + num.toString);
     } else {
