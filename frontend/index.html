@@ -6,24 +6,11 @@
     <title>CSH Floorplan</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
     <svg id="floorplan" xmlns="http://www.w3.org/2000/svg" viewBox="1464 -458 2772.3 2559">
-        <style>
-            svg {
-                height: 90vh;
-            }
-            
-            .room {
-                opacity: 0.5;
-                fill: #F70303;
-            }
-            
-            .room:hover {
-                fill: purple;
-            }
-        </style>
         <g id="southSide">
             <path id="nrh-3-3121" class="room" d="M1620.3 1136v111h93v-145h-36v34z" />
             <path id="nrh-3-3111" class="room" d="M1850.3 1028h119v219h-119z" />
@@ -104,67 +91,7 @@
         </g>
     </svg>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-    <script>
-        /* regexBldg gets building name from ID
-           Ex:  nrh-3-3071  => nrh
-                fish-3-3050 => fish
-        */
-        var regexBldg = /([(a-zA-Z)])\w+/g;
-        /* regexNum gets room # from ID
-           Ex:  nrh-3-3071  => 3071
-                fish-3-3050 => 3050
-        */
-        var regexNum = /([^(a-zA-Z)-])\w+/g;
-
-        function nrhOrFish(id) {
-            /*
-            Uses regex, checks if id starts with nrh or fish, or something else
-            Example IDs:  nrh-3-3071  => isNrh
-                          fish-3-3050 => isFish
-                          sol-3-3011  => Neither
-            */
-            var bldg = id.match(regexBldg);
-            var num = id.match(regexNum);
-            if (bldg == "nrh") {
-                getResidents(num.toString(), function (data) {
-                    var parsed_data = JSON.parse(data.responseText);
-                    console.log(parsed_data[0]);
-                });
-            } else if (bldg == "fish") {
-                getResidents("F%20" + num.toString(), function (data) {
-                    var parsed_data = JSON.parse(data.responseText);
-                    console.log(parsed_data[0]);
-                });
-            } else {
-                console.log("Neither NRH nor Fish");
-            }
-        }
-
-        $('.room').click(function () {
-            /*
-            Uses jQuery click function,
-            gets ID of clicked element
-            and calls nrhOrFish w/ ID.
-            */
-            nrhOrFish(this.id);
-        });
-
-
-
-
-        function getResidents(room, callback) {
-            url = "https://map.csh.rit.edu/api/get/" + room;
-            var request = new XMLHttpRequest();
-            request.open("GET", url, true);
-            request.onreadystatechange = function () {
-                //console.log("GET State: " + request.readyState + " - Status: " + request.status);
-                if (request.readyState == 4 && request.status == 200) {
-                    callback(request);
-                }
-            }
-            request.send(null);
-        }
-    </script>
+    <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,12 @@
+svg {
+    height: 90vh;
+}
+
+.room {
+    opacity: 0.5;
+    fill: #F70303;
+}
+
+.room:hover {
+    fill: purple;
+}
