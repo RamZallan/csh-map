@@ -16,12 +16,12 @@ function nrhOrFish(id) {
                   fish-3-3050 => isFish
                   sol-3-3011  => Neither
     */
-    var bldg = id.match(regexBldg);
-    var num = id.match(regexNum);
+    var bldg = id.match(regexBldg).toString();
+    var num = id.match(regexNum).toString();
     if (bldg == "nrh") {
-        outputResidents(num.toString());
+        outputResidents(num);
     } else if (bldg == "fish") {
-        outputResidents("F%20" + num.toString);
+        outputResidents('F%20' + num);
     } else {
         console.log("Neither NRH nor Fish");
     }
