@@ -56,11 +56,11 @@ function outputResidents(roomNum) {
     getResidents(roomNum, function (data) {
         var parsed_data = JSON.parse(data.responseText);
         if (parsed_data[1]) {
-            console.log(parsed_data[0] + '\n' + parsed_data[1]);
+            alert(parsed_data[0] + '\n' + parsed_data[1]);
         } else if (parsed_data[0]) {
-            console.log(parsed_data[0]);
+            alert(parsed_data[0]);
         } else {
-            console.log('No residents.');
+            alert('No residents.');
         }
     });
 }
