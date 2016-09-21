@@ -1,12 +1,31 @@
+body {
+    padding-top: 80px;
+}
+
 svg {
-    width: 90vmin;
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
 }
 
 .room {
     opacity: 0.5;
-    fill: #F70303;
+    fill: #B0197E;
+    cursor: pointer;
 }
 
 .room:hover {
-    fill: purple;
+    opacity: 1;
+}
+
+#nrh-3-3071:after {
+    display: inline-block;
+    content: "test";
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+
+nav .glyphicon {
+    margin-right: 5px;
 }
