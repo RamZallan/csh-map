@@ -19,6 +19,7 @@ function setupModal(bldg, num, residents) {
     */
     $modalTitle.text(bldg + " " + num);
     $modalBody.text(residents);
+    console.log(residents);
 }
 
 function getResidents(room, callback) {
@@ -47,6 +48,7 @@ function outputResidents(roomNum) {
     one is returned; returns if room has no residents.
     */
     getResidents(roomNum, function (data) {
+        console.log(data);
         var parsed_data = JSON.parse(data.responseText);
         if (parsed_data[1]) {
             return (parsed_data[0] + '\n' + parsed_data[1]);
