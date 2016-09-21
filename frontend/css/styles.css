@@ -29,3 +29,17 @@ footer {
     font-weight: bold;
     font-size: 14px;
 }
+
+.modal-header {
+    padding: 2px 0;
+    text-align: center;
+    border-bottom: 1px solid #555;
+}
+
+.modal-header .close {
+    padding: 5px 10px;
+    font-size: 25px;
+    color: #B0197E;
+    outline: none;
+}
+

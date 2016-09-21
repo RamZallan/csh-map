@@ -9,6 +9,10 @@ var regexBldg = /([(a-zA-Z)])\w+/g;
 */
 var regexNum = /([^(a-zA-Z)-])\w+/g;
 
+// Used for convenience, but not neccesary
+var $modalTitle = $('#map-modal .modal-title');
+var $modalBody = $("#map-modal .modal-body");
+
 function nrhOrFish(id) {
     /*
     Uses regex, checks if id starts with nrh or fish, or something else
@@ -19,12 +23,15 @@ function nrhOrFish(id) {
     var bldg = id.match(regexBldg).toString();
     var num = id.match(regexNum).toString();
     if (bldg == "nrh") {
-        outputResidents(num);
+        $modalTitle.css('textTransform', 'uppercase');
+        setupModal(bldg, num, outputResidents(num));
     } else if (bldg == "fish") {
-        outputResidents('F%20' + num);
+        $modalTitle.css('textTransform', 'capitalize');
+        setupModal(bldg, num, outputResidents('F%20' + num));
     } else {
-        console.log("Neither NRH nor Fish");
+        console.log("ERROR: Room of id" + id + " is neither in NRH nor Fish");
     }
+    
 }
 
 $('.room').click(function () {
@@ -40,11 +47,16 @@ $('.room').click(function () {
 
 
 function getResidents(room, callback) {
+    /*
+    Takes in room (NRH 3071 => "3071", Fish 3050 => "F%203050"),
+    makes API call, and uses callback when called to get data.
+    */
     url = "https://map.csh.rit.edu/api/get/" + room;
     var request = new XMLHttpRequest();
     request.open("GET", url, true);
     request.onreadystatechange = function () {
-        //console.log("GET State: " + request.readyState + " - Status: " + request.status);
+        // Uncomment line below when debugging, to check that API calls are working.
+        // console.log("GET State: " + request.readyState + " - Status: " + request.status);
         if (request.readyState == 4 && request.status == 200) {
             callback(request);
         }
@@ -52,15 +64,32 @@ function getResidents(room, callback) {
     request.send(null);
 }
 
+function setupModal(bldg, num, residents) {
+    /*
+    Gets the display modal ready with correct resident
+    values, awaiting `display: block`.
+    */
+    $modalTitle.text(bldg + " " + num);
+    $modalBody.text(residents);
+}
+
 function outputResidents(roomNum) {
+    /*
+    Uses getResidents() w/ room # formatted for API call
+    to get and parse the given data. If room has 2 residents,
+    2 are returned, with comma; if room has 1 resident, only
+    one is returned; returns if room has no residents.
+    */
     getResidents(roomNum, function (data) {
         var parsed_data = JSON.parse(data.responseText);
         if (parsed_data[1]) {
-            alert(parsed_data[0] + '\n' + parsed_data[1]);
+            return (parsed_data[0] + '\n' + parsed_data[1]);
         } else if (parsed_data[0]) {
-            alert(parsed_data[0]);
+            alert(parsed_data[0])
+            return parsed_data[0];
+            
         } else {
-            alert('No residents.');
+            return 'No residents.';
         }
     });
 }
