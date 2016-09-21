@@ -9,9 +9,10 @@ svg {
 }
 
 .room {
-    opacity: 0.5;
-    fill: #B0197E;
     cursor: pointer;
+    opacity: 0.6;
+    fill: #B0197E;
+    transition: 0.3s opacity;
 }
 
 .room:hover {
