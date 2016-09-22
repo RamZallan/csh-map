@@ -2,7 +2,10 @@ import os
 from csh_map import app
 from csh_map.ldap import ldap_init
 
-app.config.from_pyfile(os.path.join(os.getcwd(), "config.py"))
+if os.path.exists(os.path.join(os.getcwd(), "config.py")):
+    app.config.from_pyfile(os.path.join(os.getcwd(), "config.py"))
+else:
+    app.config.from_pyfile(os.path.join(os.getcwd(), "config.env.py"))
 
 ldap_init(app)
 
