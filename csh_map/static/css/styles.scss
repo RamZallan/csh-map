@@ -1,0 +1,98 @@
+$purple: #B0197E;
+$pink: #E11C52;
+$blue: #0F6ABB;
+$green: #008344;
+
+body {
+    padding: 80px 0 20px 0;
+}
+
+#legend {
+    text-align: center;
+    font-size: 16px;
+    opacity: 0.7;
+    color: white;
+    & #legend-buildings {
+        margin-bottom: 5px;
+    }
+    & span {
+        padding: 5px 10px;
+        margin: 10px 2px;
+        &#legend-bathrooms {
+            background: $pink;
+        }
+        &#legend-nrh {
+            background: $purple;
+        }
+        &#legend-fish {
+            background: $blue;
+        }
+        &#legend-staircases {
+            background: $green;
+        }
+    }
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+.room {
+    cursor: pointer;
+    opacity: 0.7;
+    fill: $purple;
+    transition: 0.3s opacity;
+    &.bathroom {
+        fill: $pink;
+    }
+    &.staircase {
+        fill: $green;
+    }
+    &:hover {
+        opacity: 1;
+    }
+}
+
+#fish {
+    & .room {
+        fill: $blue;
+        &.bathroom {
+            fill: $pink;
+        }
+    }
+}
+
+nav .glyphicon {
+    margin-right: 5px;
+}
+
+footer {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.modal-header {
+    padding: 2px 0;
+    text-align: center;
+    border-bottom: 1px solid #555;
+    & .close {
+        padding: 5px 10px;
+        font-size: 25px;
+        color: $purple;
+        outline: none;
+    }
+    & h4 {
+        font-weight: bolder;
+        margin-left: 30px;
+    }
+}
+
+.modal-body p {
+    font-size: 16px;
+    padding-top: 10px;
+    text-align: center;
+}

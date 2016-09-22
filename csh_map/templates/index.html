@@ -32,7 +32,6 @@
             <!--/.nav-collapse -->
         </div>
     </nav>
-
     <div class="modal fade" id="map-modal" role="dialog" tabindex="-1" aria-labelledby="residents-modal-label" style="display: none;">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -46,29 +45,40 @@
 
     <div class="container">
         <div class="row">
+            <div class="col-xs-12 col-md-8 col-md-offset-2" id="legend">
+                <div id="legend-buildings"><span id="legend-nrh">Nathaniel Rochester Hall</span>
+                    <span id="legend-fish">Helen Fish Hall</span>
+                </div>
+                <div class="legend-types">
+                    <span id="legend-bathrooms">Bathrooms</span>
+                    <span id="legend-staircases">Staircases</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12 col-lg-8 col-lg-offset-2" id="map-container">
                 <svg id="floorplan" xmlns="http://www.w3.org/2000/svg" viewBox="1464 -458 2772.3 2559">
                     <g id="southSide">
-                            <path id="nrh-3-3121" class="room" data-toggle="modal" data-target="#map-modal" d="M1620.3 1136v111h93v-145h-36v34z" />
-                            <path id="nrh-3-3111" class="room" data-toggle="modal" data-target="#map-modal" d="M1850.3 1028h119v219h-119z" />
-                            <path id="nrh-3-3107" class="room" data-toggle="modal" data-target="#map-modal" d="M1978.3 1028h119v219h-119z" />
-                            <path id="nrh-3-3103" class="room" data-toggle="modal" data-target="#map-modal" d="M2106.3 1028h119v219h-119z" />
-                            <path id="nrh-3-3099" class="room" data-toggle="modal" data-target="#map-modal" d="M2234.3 1028h119v219h-119z" />
-                            <path id="nrh-3-3095" class="room" data-toggle="modal" data-target="#map-modal" d="M2362.3 1028h119v219h-119z" />
-                            <path id="nrh-3-3091" class="room" data-toggle="modal" data-target="#map-modal" d="M2490.3 1028h119v219h-119z" />
-                            <path id="nrh-3-3087" class="room" data-toggle="modal" data-target="#map-modal" d="M2618.3 1028h119v219h-119z" />
-                            <path id="nrh-3-3086" class="room" data-toggle="modal" data-target="#map-modal" d="M2618.3 736h119v219h-119z" />
-                            <path id="nrh-3-3090" class="room" data-toggle="modal" data-target="#map-modal" d="M2490.3 736h119v219h-119z" />
-                            <path id="nrh-3-3094" class="room" data-toggle="modal" data-target="#map-modal" d="M2362.3 736h119v219h-119z" />
-                            <path id="nrh-3-3098" class="room" data-toggle="modal" data-target="#map-modal" d="M2106.3 736h247v219h-247z" />
-                            <path id="nrh-3-3110" class="room" data-toggle="modal" data-target="#map-modal" d="M1850.3 736h119v219h-119z" />
-                            <path id="nrh-3-3106" class="room" data-toggle="modal" data-target="#map-modal" d="M1978.3 736h119v219h-119z" />
-                            <path id="nrh-3-3115" class="room" data-toggle="modal" data-target="#map-modal" d="M1722.3 1028h119v219h-119z" />
-                            <path id="nrh-3-3962" class="room" data-toggle="modal" data-target="#map-modal" d="M1722.3 736h119v219h-119z" />
-                            <path id="nrh-3-3125" class="room" data-toggle="modal" data-target="#map-modal" d="M1464 1083.3h147.3v164H1464z" />
-                            <path id="nrh-3-3126" class="room" data-toggle="modal" data-target="#map-modal" d="M1464 909.3h147.3v164H1464z" />
-                            <path id="nrh-3-3124" class="room" data-toggle="modal" data-target="#map-modal" d="M1464 736h147.3v164H1464z" />
-                            <path id="nrh-3-3120" class="room" data-toggle="modal" data-target="#map-modal" d="M1620.3 736h93v73h-93z" />
+                        <path id="nrh-3-3121" class="room" data-toggle="modal" data-target="#map-modal" d="M1620.3 1136v111h93v-145h-36v34z" />
+                        <path id="nrh-3-3111" class="room" data-toggle="modal" data-target="#map-modal" d="M1850.3 1028h119v219h-119z" />
+                        <path id="nrh-3-3107" class="room" data-toggle="modal" data-target="#map-modal" d="M1978.3 1028h119v219h-119z" />
+                        <path id="nrh-3-3103" class="room" data-toggle="modal" data-target="#map-modal" d="M2106.3 1028h119v219h-119z" />
+                        <path id="nrh-3-3099" class="room" data-toggle="modal" data-target="#map-modal" d="M2234.3 1028h119v219h-119z" />
+                        <path id="nrh-3-3095" class="room" data-toggle="modal" data-target="#map-modal" d="M2362.3 1028h119v219h-119z" />
+                        <path id="nrh-3-3091" class="room" data-toggle="modal" data-target="#map-modal" d="M2490.3 1028h119v219h-119z" />
+                        <path id="nrh-3-3087" class="room bathroom" data-toggle="modal" data-target="#map-modal" d="M2618.3 1028h119v219h-119z" />
+                        <path id="nrh-3-3086" class="room" data-toggle="modal" data-target="#map-modal" d="M2618.3 736h119v219h-119z" />
+                        <path id="nrh-3-3090" class="room" data-toggle="modal" data-target="#map-modal" d="M2490.3 736h119v219h-119z" />
+                        <path id="nrh-3-3094" class="room" data-toggle="modal" data-target="#map-modal" d="M2362.3 736h119v219h-119z" />
+                        <path id="nrh-3-3098" class="room" data-toggle="modal" data-target="#map-modal" d="M2106.3 736h247v219h-247z" />
+                        <path id="nrh-3-3110" class="room" data-toggle="modal" data-target="#map-modal" d="M1850.3 736h119v219h-119z" />
+                        <path id="nrh-3-3106" class="room" data-toggle="modal" data-target="#map-modal" d="M1978.3 736h119v219h-119z" />
+                        <path id="nrh-3-3115" class="room bathroom" data-toggle="modal" data-target="#map-modal" d="M1722.3 1028h119v219h-119z" />
+                        <path id="nrh-3-3962" class="room staircase" data-toggle="modal" data-target="#map-modal" d="M1722.3 736h119v219h-119z" />
+                        <path id="nrh-3-3125" class="room bathroom" data-toggle="modal" data-target="#map-modal" d="M1464 1083.3h147.3v164H1464z" />
+                        <path id="nrh-3-3126" class="room" data-toggle="modal" data-target="#map-modal" d="M1464 909.3h147.3v164H1464z" />
+                        <path id="nrh-3-3124" class="room" data-toggle="modal" data-target="#map-modal" d="M1464 736h147.3v164H1464z" />
+                        <path id="nrh-3-3120" class="room" data-toggle="modal" data-target="#map-modal" d="M1620.3 736h93v73h-93z" />
                     </g>
                     <g id="lobby">
                         <path id="nrh-3-3082" class="room" data-toggle="modal" data-target="#map-modal" d="M2863.3 862V736h-117v207h68v-81z" />
@@ -84,15 +94,15 @@
                         <path id="nrh-3-3058" class="room" data-toggle="modal" data-target="#map-modal" d="M3379.8 736h247v219h-247z" />
                         <path id="nrh-3-3054" class="room" data-toggle="modal" data-target="#map-modal" d="M3635.8 736h119v219h-119z" />
                         <path id="nrh-3-3050" class="room" data-toggle="modal" data-target="#map-modal" d="M3763.8 736h119v219h-119z" />
-                        <path id="nrh-3-3961" class="room" data-toggle="modal" data-target="#map-modal" d="M3891.8 736h119v219h-119z" />
+                        <path id="nrh-3-3961" class="room staircase" data-toggle="modal" data-target="#map-modal" d="M3891.8 736h119v219h-119z" />
                         <path id="nrh-3-3071" class="room" data-toggle="modal" data-target="#map-modal" d="M3123.8 1028h119v219h-119z" />
                         <path id="nrh-3-3067" class="room" data-toggle="modal" data-target="#map-modal" d="M3251.8 1028h119v219h-119z" />
                         <path id="nrh-3-3063" class="room" data-toggle="modal" data-target="#map-modal" d="M3379.8 1028h119v219h-119z" />
-                        <path id="nrh-3-3075" class="room" data-toggle="modal" data-target="#map-modal" d="M2995.8 1028h119v219h-119z" />
+                        <path id="nrh-3-3075" class="room bathroom" data-toggle="modal" data-target="#map-modal" d="M2995.8 1028h119v219h-119z" />
                         <path id="nrh-3-3059" class="room" data-toggle="modal" data-target="#map-modal" d="M3507.8 1028h119v219h-119z" />
                         <path id="nrh-3-3055" class="room" data-toggle="modal" data-target="#map-modal" d="M3635.8 1028h119v219h-119z" />
                         <path id="nrh-3-3051" class="room" data-toggle="modal" data-target="#map-modal" d="M3763.8 1028h119v219h-119z" />
-                        <path id="nrh-3-3047" class="room" data-toggle="modal" data-target="#map-modal" d="M3891.8 1028h119v219h-119z" />
+                        <path id="nrh-3-3047" class="room bathroom" data-toggle="modal" data-target="#map-modal" d="M3891.8 1028h119v219h-119z" />
                         <path id="nrh-3-3048" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8 736h152.5v165h-152.5z" />
                         <path id="nrh-3-3034" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8 901h153v174h-153z" />
                         <path id="nrh-3-3028" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8 1170h153v77h-153z" />
@@ -103,12 +113,12 @@
                         <path id="nrh-3-3020" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8 1430h153v161h-153z" />
                         <path id="nrh-3-3016" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8 1600h153v161h-153z" />
                         <path id="nrh-3-3012" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8 1770h153v161h-153z" />
-                        <path id="nrh-3-3025" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 1260h153v161h-153z" />
+                        <path id="nrh-3-3025" class="room bathroom" data-toggle="modal" data-target="#map-modal" d="M3857.8 1260h153v161h-153z" />
                         <path id="nrh-3-3021" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 1430h153v161h-153z" />
                         <path id="nrh-3-3017" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 1600h153v161h-153z" />
                         <path id="nrh-3-3013" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 1770h153v161h-153z" />
                         <path id="nrh-3-3009" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 1940h153v161h-153z" />
-                        <path id="nrh-3-3960" class="room" data-toggle="modal" data-target="#map-modal" d="M4109.8 1940h127v161h-127z" />
+                        <path id="nrh-3-3960" class="room staircase" data-toggle="modal" data-target="#map-modal" d="M4109.8 1940h127v161h-127z" />
                         <path id="nrh-3-3008" class="room" data-toggle="modal" data-target="#map-modal" d="M4019.8 2042h82.5v59h-82.5z" />
                     </g>
                     <g id="fish">
@@ -116,13 +126,13 @@
                         <path id="fish-3-3001" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 562h153v161h-153z" />
                         <path id="fish-3-3004" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8 392h153v161h-153z" />
                         <path id="fish-3-3008" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8 222h153v161h-153z" />
-                        <path id="fish-3-3961" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 392h153v161h-153z" />
+                        <path id="fish-3-3961" class="room staircase" data-toggle="modal" data-target="#map-modal" d="M3857.8 392h153v161h-153z" />
                         <path id="fish-3-3011" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 222h153v161h-153z" />
                         <path id="fish-3-3017" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8 52h153v161h-153z" />
                         <path id="fish-3-3021" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8-118h153V43h-153z" />
                         <path id="fish-3-3045" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8-288h153v161h-153z" />
-                        <path id="fish-3-3018" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8-1h153v214h-153z" />
-                        <path id="fish-3-3023" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8-288h153v214h-153z" />
+                        <path id="fish-3-3018" class="room bathroom" data-toggle="modal" data-target="#map-modal" d="M4083.8-1h153v214h-153z" />
+                        <path id="fish-3-3023" class="room bathroom" data-toggle="modal" data-target="#map-modal" d="M4083.8-288h153v214h-153z" />
                         <path id="fish-3-3049" class="room" data-toggle="modal" data-target="#map-modal" d="M3857.8-458h153v161h-153z" />
                         <path id="fish-3-3048" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8-458h153v161h-153z" />
                     </g>

@@ -12,6 +12,8 @@ var regexBldg = /([(a-zA-Z)])\w+/g,
 var $modalTitle = $('#map-modal .modal-title'),
     $modalBody = $("#map-modal .modal-body");
 
+
+
 function updateModalTitle(title) {
     /*
     Gets the display modal ready with correct
@@ -47,10 +49,12 @@ function updateResidents(roomNum) {
         case "3058":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Lounge");
+            updateModalBody("No residents.");
             break;
         case "3098":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("User Center");
+            updateModalBody("No residents.");
             break;
         case "3034":
             $modalTitle.css('textTransform', 'capitalize');
@@ -59,16 +63,19 @@ function updateResidents(roomNum) {
             break;
             $modalTitle.css('textTransform', 'capitalize');
         case "3048":
+            $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Server Room");
             updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow<br>James Forcier");
             break;
         case "3012":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("User Center");
+            updateModalBody("No residents.");
             break;
         case "3950":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Elevator");
+            updateModalBody("No residents.");
             break;
         case "3080":
             $modalTitle.css('textTransform', 'capitalize');
@@ -84,8 +91,9 @@ function updateResidents(roomNum) {
         case "3961":
         case "3960":
         case "3962":
-            $modalTitle.css('textTransform', 'capitalize');
+            $modalTitle.css('textTransform', 'capitalize'); 
             updateModalTitle("Staircase");
+            updateModalBody("No residents.");
             break;
         case "F%203023":
         case "F%203018":

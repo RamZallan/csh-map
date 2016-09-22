@@ -1,55 +1,93 @@
+/* line 6, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
 body {
-    padding-top: 80px;
-}
+  padding: 80px 0 20px 0; }
 
+/* line 10, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+#legend {
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.7;
+  color: white; }
+  /* line 15, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+  #legend #legend-buildings {
+    margin-bottom: 5px; }
+  /* line 18, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+  #legend span {
+    padding: 5px 10px;
+    margin: 10px 2px; }
+    /* line 21, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+    #legend span#legend-bathrooms {
+      background: #E11C52; }
+    /* line 24, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+    #legend span#legend-nrh {
+      background: #B0197E; }
+    /* line 27, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+    #legend span#legend-fish {
+      background: #0F6ABB; }
+    /* line 30, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+    #legend span#legend-staircases {
+      background: #008344; }
+
+/* line 36, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
 svg {
-    width: 100%;
-    height: auto;
-    max-height: 80vh;
-}
+  width: 100%;
+  height: auto;
+  max-height: 80vh; }
 
+/* line 42, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
 .room {
-    cursor: pointer;
-    opacity: 0.6;
-    fill: #B0197E;
-    transition: 0.3s opacity;
-}
+  cursor: pointer;
+  opacity: 0.7;
+  fill: #B0197E;
+  transition: 0.3s opacity; }
+  /* line 47, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+  .room.bathroom {
+    fill: #E11C52; }
+  /* line 50, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+  .room.staircase {
+    fill: #008344; }
+  /* line 53, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+  .room:hover {
+    opacity: 1; }
 
-.room:hover {
-    opacity: 1;
-}
+/* line 59, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+#fish .room {
+  fill: #0F6ABB; }
+  /* line 61, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+  #fish .room.bathroom {
+    fill: #E11C52; }
 
+/* line 67, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
 nav .glyphicon {
-    margin-right: 5px;
-}
+  margin-right: 5px; }
 
+/* line 71, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
 footer {
-    margin-top: 10px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 14px;
-}
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px; }
 
+/* line 78, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
 .modal-header {
-    padding: 2px 0;
-    text-align: center;
-    border-bottom: 1px solid #555;
-}
-
-.modal-header .close {
+  padding: 2px 0;
+  text-align: center;
+  border-bottom: 1px solid #555; }
+  /* line 82, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+  .modal-header .close {
     padding: 5px 10px;
     font-size: 25px;
     color: #B0197E;
-    outline: none;
-}
-
-.modal-header h4 {
+    outline: none; }
+  /* line 88, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
+  .modal-header h4 {
     font-weight: bolder;
-    margin-left: 30px;
-}
+    margin-left: 30px; }
 
+/* line 94, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
 .modal-body p {
-    font-size: 16px;
-    padding-top: 10px;
-    text-align: center;
-}/
+  font-size: 16px;
+  padding-top: 10px;
+  text-align: center; }
+
+/*# sourceMappingURL=styles.css.map */
