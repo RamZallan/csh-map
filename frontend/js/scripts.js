@@ -19,7 +19,7 @@ function setupModal(bldg, num, residents) {
     */
     $modalTitle.text(bldg + " " + num);
     $modalBody.text(residents);
-    console.log(residents);
+    console.log("setupModal - " + residents);
 }
 
 function getResidents(room, callback) {
@@ -48,10 +48,11 @@ function outputResidents(roomNum) {
     one is returned; returns if room has no residents.
     */
     getResidents(roomNum, function (data) {
-        console.log(data);
+        console.log("getResidents - " + data);
         var parsed_data = JSON.parse(data.responseText);
         if (parsed_data[1]) {
             return (parsed_data[0] + '\n' + parsed_data[1]);
+            console.log("getResidesnts - " + parsed_data[0] + '\n' + parsed_data[1]);
         } else if (parsed_data[0]) {
             return parsed_data[0];
 
@@ -70,6 +71,7 @@ function nrhOrFish(id) {
     */
     var bldg = id.match(regexBldg).toString(),
         num = id.match(regexNum).toString();
+    console.log("nrhOrFish - " + bldg + num);
     if (bldg === "nrh") {
         $modalTitle.css('textTransform', 'uppercase');
         setupModal(bldg, num, outputResidents(num));
