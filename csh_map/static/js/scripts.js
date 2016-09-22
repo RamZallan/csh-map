@@ -12,14 +12,16 @@ var regexBldg = /([(a-zA-Z)])\w+/g,
 var $modalTitle = $('#map-modal .modal-title'),
     $modalBody = $("#map-modal .modal-body");
 
-function setupModal(bldg, num, residents) {
+function updateModalTitle(title) {
     /*
-    Gets the display modal ready with correct resident
+    Gets the display modal ready with correct
     values, awaiting `display: block`.
     */
-    $modalTitle.text(bldg + " " + num);
-    $modalBody.text(residents);
-    console.log("setupModal - " + residents);
+    $modalTitle.text(title);
+}
+
+function updateModalBody(html) {
+    $modalBody.html("<p>" + html + "</p>");
 }
 
 function getResidents(room, callback) {
@@ -27,37 +29,57 @@ function getResidents(room, callback) {
     Takes in room (NRH 3071 => "3071", Fish 3050 => "F%203050"),
     makes API call, and uses callback when called to get data.
     */
-    var url = "https://map.csh.rit.edu/api/get/" + room,
-        request = new XMLHttpRequest();
-    request.open("GET", url, true);
-    request.onreadystatechange = function () {
-        // Uncomment line below when debugging, to check that API calls are working.
-        // console.log("GET State: " + request.readyState + " - Status: " + request.status);
-        if (request.readyState === 4 && request.status === 200) {
-            callback(request);
-        }
-    };
-    request.send(null);
+    $.ajax({
+            type: 'GET',
+            url: "get/" + room,
+            dataType: 'json'
+        })
+        .success(callback);
 }
 
-function outputResidents(roomNum) {
+function updateResidents(roomNum) {
     /*
     Uses getResidents() w/ room # formatted for API call
     to get and parse the given data. If room has 2 residents,
     2 are returned, with comma; if room has 1 resident, only
     one is returned; returns if room has no residents.
     */
+    switch (roomNum) {
+    case "3058":
+        updateModalTitle("Lounge");
+        break;
+    case "3098":
+        updateModalTitle("User Center");
+        break;
+    case "3034":
+        updateModalTitle("Server Room");
+        updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow");
+        break;
+    case "3048":
+        updateModalTitle("Server Room");
+        updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow");
+        break;
+    case "3012":
+        updateModalTitle("User Center");
+        break;
+    case "3950":
+        updateModalTitle("Elevator");
+    case "3080":
+        updateModalTitle("Trash Room");
+        updateModalBody("Marc Billow");
+        break;
+    case "3078":
+        updateModalTitle("Library")
+        updateModalBody("Braden Bowdish");
+        break;
+    }
     getResidents(roomNum, function (data) {
-        console.log("getResidents - " + data);
-        var parsed_data = JSON.parse(data.responseText);
-        if (parsed_data[1]) {
-            console.log("getResidesnts - " + parsed_data[0] + '\n' + parsed_data[1]);
-            return (parsed_data[0] + '\n' + parsed_data[1]);
-        } else if (parsed_data[0]) {
-            return parsed_data[0];
-
+        if (data[1]) {
+            updateModalBody(data[0] + '<br/>' + data[1]);
+        } else if (data[0]) {
+            updateModalBody(data[0]);
         } else {
-            return 'No residents.';
+            updateModalBody('No residents.');
         }
     });
 }
@@ -71,17 +93,19 @@ function nrhOrFish(id) {
     */
     var bldg = id.match(regexBldg).toString(),
         num = id.match(regexNum).toString();
-    console.log("nrhOrFish - " + bldg + num);
     if (bldg === "nrh") {
         $modalTitle.css('textTransform', 'uppercase');
-        setupModal(bldg, num, outputResidents(num));
+        updateModalBody("Loading...");
+        updateModalTitle(bldg + " " + num);
+        updateResidents(num);
     } else if (bldg === "fish") {
         $modalTitle.css('textTransform', 'capitalize');
-        setupModal(bldg, num, outputResidents('F%20' + num));
+        updateModalBody("Loading...");
+        updateModalTitle(bldg + " " + num);
+        updateResidents('F%20' + num)
     } else {
         console.log("ERROR: Room of id" + id + " is neither in NRH nor Fish");
     }
-
 }
 
 $('.room').click(function () {
