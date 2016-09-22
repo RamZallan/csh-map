@@ -2,7 +2,6 @@ $purple: #B0197E;
 $pink: #E11C52;
 $blue: #0F6ABB;
 $green: #008344;
-
 body {
     padding: 80px 0 20px 0;
 }
@@ -60,6 +59,9 @@ svg {
         fill: $blue;
         &.bathroom {
             fill: $pink;
+        }
+        &.staircase {
+            fill: $green;
         }
     }
 }
