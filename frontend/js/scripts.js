@@ -47,12 +47,37 @@ function updateResidents(roomNum) {
     2 are returned, with comma; if room has 1 resident, only
     one is returned; returns if room has no residents.
     */
+    switch(roomNum) {
+        case "3058":
+            updateModal(false, false, "Lounge");
+        break;
+        case "3098":
+            updateModal(false, false, "User Center");
+        break;
+        case "3034":
+            updateModal(false, false, "Server Room<br/>Jordan & Liam");
+        break;
+        case "3048":
+            updateModal(false, false, "Server Room");
+        break;
+        case "3012":
+            updateModal(false, false, "User Center");
+        break;
+        case "3950":
+            updateModal(false, false, "Elevator");
+        case "3080":
+            updateModal(false, false, "Garbage Room<br/>Marc");
+        break;
+        case "3078":
+            updateModal(false, false, "Library<br/>Braden")
+        break;
+    }
     getResidents(roomNum, function (data) {
         console.log("getResidents - " + data);
         var parsed_data = JSON.parse(data.responseText);
         if (parsed_data[1]) {
-            console.log("getResidesnts - " + parsed_data[0] + '\n' + parsed_data[1]);
-            updateModal(false, false, parsed_data[0] + '\n' + parsed_data[1]);
+            console.log("getResidesnts - " + parsed_data[0] + '<br/>' + parsed_data[1]);
+            updateModal(false, false, parsed_data[0] + '<br/>' + parsed_data[1]);
         } else if (parsed_data[0]) {
             updateModal(false, false, parsed_data[0]);
 
