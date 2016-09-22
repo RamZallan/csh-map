@@ -125,7 +125,6 @@ function updateResidents(roomNum) {
             });
             break;
     }
-
 }
 
 function nrhOrFish(id) {
