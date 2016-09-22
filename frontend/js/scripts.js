@@ -40,7 +40,7 @@ function getResidents(room, callback) {
     request.send(null);
 }
 
-function outputResidents(roomNum) {
+function updateResidents(roomNum) {
     /*
     Uses getResidents() w/ room # formatted for API call
     to get and parse the given data. If room has 2 residents,
