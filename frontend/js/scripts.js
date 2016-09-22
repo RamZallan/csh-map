@@ -18,7 +18,7 @@ function updateModal(bldg, num, residents) {
     values, awaiting `display: block`.
     */
     if (bldg && num) $modalTitle.text(bldg + " " + num);
-    if (residents) $modalBody.text(residents);
+    if (residents) $modalBody.text("<p>" + residents + "</p>");
     console.log("setupModal - " + residents);
 }
 
