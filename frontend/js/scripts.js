@@ -51,8 +51,8 @@ function outputResidents(roomNum) {
         console.log("getResidents - " + data);
         var parsed_data = JSON.parse(data.responseText);
         if (parsed_data[1]) {
-            return (parsed_data[0] + '\n' + parsed_data[1]);
             console.log("getResidesnts - " + parsed_data[0] + '\n' + parsed_data[1]);
+            return (parsed_data[0] + '\n' + parsed_data[1]);
         } else if (parsed_data[0]) {
             return parsed_data[0];
 
