@@ -12,13 +12,13 @@ var regexBldg = /([(a-zA-Z)])\w+/g,
 var $modalTitle = $('#map-modal .modal-title'),
     $modalBody = $("#map-modal .modal-body");
 
-function setupModal(bldg, num, residents) {
+function updateModal(bldg, num, residents) {
     /*
     Gets the display modal ready with correct resident
     values, awaiting `display: block`.
     */
-    $modalTitle.text(bldg + " " + num);
-    $modalBody.text(residents);
+    if (bldg && num) $modalTitle.text(bldg + " " + num);
+    if (residents) $modalBody.text(residents);
     console.log("setupModal - " + residents);
 }
 
@@ -52,12 +52,12 @@ function outputResidents(roomNum) {
         var parsed_data = JSON.parse(data.responseText);
         if (parsed_data[1]) {
             console.log("getResidesnts - " + parsed_data[0] + '\n' + parsed_data[1]);
-            return (parsed_data[0] + '\n' + parsed_data[1]);
+            updateModal(false, false, parsed_data[0] + '\n' + parsed_data[1]);
         } else if (parsed_data[0]) {
-            return parsed_data[0];
+            updateModal(false, false, parsed_data[0]);
 
         } else {
-            return 'No residents.';
+            updateModal(false, false, 'No residents.');
         }
     });
 }
@@ -74,10 +74,12 @@ function nrhOrFish(id) {
     console.log("nrhOrFish - " + bldg + num);
     if (bldg === "nrh") {
         $modalTitle.css('textTransform', 'uppercase');
-        setupModal(bldg, num, outputResidents(num));
+        updateModal(bldg, num, "Loading...");
+        updateResidents(num);
     } else if (bldg === "fish") {
         $modalTitle.css('textTransform', 'capitalize');
-        setupModal(bldg, num, outputResidents('F%20' + num));
+        updateModal(bldg, num, "Loading...");
+        updateResidents('F%20' + num)
     } else {
         console.log("ERROR: Room of id" + id + " is neither in NRH nor Fish");
     }
