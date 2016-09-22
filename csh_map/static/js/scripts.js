@@ -12,7 +12,14 @@ var regexBldg = /([(a-zA-Z)])\w+/g,
 var $modalTitle = $('#map-modal .modal-title'),
     $modalBody = $("#map-modal .modal-body");
 
+function getCatFact() {
+    $.get("http://cayfacts.xyz/catfacts", function(data) {
+        data = data.split('\n')
+        console.log(text(data[Math.floor(Math.random() * data.length)]));
+    });
+}
 
+getCatFact();
 
 function updateModalTitle(title) {
     /*
@@ -49,7 +56,8 @@ function updateResidents(roomNum) {
         case "3058":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Lounge");
-            updateModalBody("No residents.");
+            updateModalBody('AJ Mandula\'s "A Perfect Lounge"');
+            updateModalBody(getCatFact().toString);
             break;
         case "3098":
             $modalTitle.css('textTransform', 'capitalize');
@@ -91,7 +99,7 @@ function updateResidents(roomNum) {
         case "3961":
         case "3960":
         case "3962":
-            $modalTitle.css('textTransform', 'capitalize'); 
+            $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Staircase");
             updateModalBody("No residents.");
             break;
