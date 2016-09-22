@@ -30,11 +30,10 @@ function getResidents(room, callback) {
     makes API call, and uses callback when called to get data.
     */
     $.ajax({
-            type: 'GET',
-            url: "get/" + room,
-            dataType: 'json'
-        })
-        .success(callback);
+        type: 'GET',
+        url: "get/" + room,
+        dataType: 'json'
+    }).success(callback);
 }
 
 function updateResidents(roomNum) {
@@ -45,43 +44,72 @@ function updateResidents(roomNum) {
     one is returned; returns if room has no residents.
     */
     switch (roomNum) {
-    case "3058":
-        updateModalTitle("Lounge");
-        break;
-    case "3098":
-        updateModalTitle("User Center");
-        break;
-    case "3034":
-        updateModalTitle("Server Room");
-        updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow");
-        break;
-    case "3048":
-        updateModalTitle("Server Room");
-        updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow");
-        break;
-    case "3012":
-        updateModalTitle("User Center");
-        break;
-    case "3950":
-        updateModalTitle("Elevator");
-    case "3080":
-        updateModalTitle("Trash Room");
-        updateModalBody("Marc Billow");
-        break;
-    case "3078":
-        updateModalTitle("Library")
-        updateModalBody("Braden Bowdish");
-        break;
+        case "3058":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Lounge");
+            break;
+        case "3098":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("User Center");
+            break;
+        case "3034":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Server Room");
+            updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow<br>James Forcier");
+            break;
+            $modalTitle.css('textTransform', 'capitalize');
+        case "3048":
+            updateModalTitle("Server Room");
+            updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow<br>James Forcier");
+            break;
+        case "3012":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("User Center");
+            break;
+        case "3950":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Elevator");
+            break;
+        case "3080":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Trash Room");
+            updateModalBody("Marc Billow");
+            break;
+        case "3078":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Library");
+            updateModalBody("Braden Bowdish");
+            break;
+        case "F%203961":
+        case "3961":
+        case "3960":
+        case "3962":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Staircase");
+            break;
+        case "F%203023":
+        case "F%203018":
+        case "3047":
+        case "3025":
+        case "3075":
+        case "3087":
+        case "3115":
+        case "3121":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Restroom");
+        default:
+            getResidents(roomNum, function(data) {
+                if (data[1]) {
+                    updateModalBody(data[0] + '<br>' + data[1]);
+                } else if (data[0]) {
+                    updateModalBody(data[0]);
+                } else {
+                    updateModalBody('No residents.');
+                }
+            });
+            break;
     }
-    getResidents(roomNum, function (data) {
-        if (data[1]) {
-            updateModalBody(data[0] + '<br/>' + data[1]);
-        } else if (data[0]) {
-            updateModalBody(data[0]);
-        } else {
-            updateModalBody('No residents.');
-        }
-    });
+
 }
 
 function nrhOrFish(id) {
@@ -102,13 +130,13 @@ function nrhOrFish(id) {
         $modalTitle.css('textTransform', 'capitalize');
         updateModalBody("Loading...");
         updateModalTitle(bldg + " " + num);
-        updateResidents('F%20' + num)
+        updateResidents('F%20' + num);
     } else {
         console.log("ERROR: Room of id" + id + " is neither in NRH nor Fish");
     }
 }
 
-$('.room').click(function () {
+$('.room').click(function() {
     /*
     Uses jQuery click function,
     gets ID of clicked element

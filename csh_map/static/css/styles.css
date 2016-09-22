@@ -43,3 +43,13 @@ footer {
     outline: none;
 }
 
+.modal-header h4 {
+    font-weight: bolder;
+    margin-left: 30px;
+}
+
+.modal-body p {
+    font-size: 16px;
+    padding-top: 10px;
+    text-align: center;
+}/
