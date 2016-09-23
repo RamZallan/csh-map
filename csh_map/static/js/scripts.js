@@ -77,7 +77,7 @@ function updateResidents(roomNum) {
             break;
         case "3012":
             $modalTitle.css('textTransform', 'capitalize');
-            updateModalTitle("User Center");
+            updateModalTitle("Luser Center");
             updateModalBody("No residents.");
             break;
         case "3950":
