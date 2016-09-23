@@ -16,7 +16,7 @@ body {
   #legend div[id^="legend-"] {
     display: inline-block;
     padding: 5px 10px;
-    margin: 2px 5px; }
+    margin: 1px 5px; }
     /* line 23, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
     #legend div[id^="legend-"]#legend-bathrooms {
       background: #E11C52; }
