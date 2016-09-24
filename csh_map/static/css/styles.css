@@ -99,7 +99,7 @@ footer {
   padding-top: 10px;
   text-align: center; }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   /* line 111, C:/Users/Ram/Desktop/csh-map/csh_map/static/css/styles.scss */
   svg {
     margin-top: 25px;
