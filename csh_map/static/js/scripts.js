@@ -5,21 +5,13 @@
            Ex:  nrh-3-3071  => 3071
            fish-3-3050 => 3050
 */
+
 var regexBldg = /([(a-zA-Z)])\w+/g,
     regexNum = /([^(a-zA-Z)\-])\w+/g;
 
 // Used for convenience, but not neccesary
 var $modalTitle = $('#map-modal .modal-title'),
     $modalBody = $("#map-modal .modal-body");
-
-function getCatFact() {
-    $.get("http://cayfacts.xyz/catfacts", function(data) {
-        data = data.split('\n')
-        console.log(text(data[Math.floor(Math.random() * data.length)]));
-    });
-}
-
-getCatFact();
 
 function updateModalTitle(title) {
     /*
@@ -57,7 +49,6 @@ function updateResidents(roomNum) {
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Lounge");
             updateModalBody('AJ Mandula\'s "A Perfect Lounge"');
-            updateModalBody(getCatFact().toString);
             break;
         case "3098":
             $modalTitle.css('textTransform', 'capitalize');
@@ -158,4 +149,19 @@ $('.room').click(function() {
     and calls nrhOrFish w/ ID.
     */
     nrhOrFish(this.id);
+});
+
+
+$('#search-button').click(function() {
+    query = $('#search').val().replace(/\s+/g, '-').toLowerCase();
+    var bldg = query.match(regexBldg),
+        num = query.match(regexNum);
+        console.log(bldg, num);
+    if (bldg == "nrh" || bldg == "fish") {
+        $('#map-modal').modal('show');
+        nrhOrFish(query);
+    }
+    else {
+        $('#search').attr('data-content', 'Room not found.\nExample searches: NRH 3071, Fish 3050').popover('show').popover('disable');
+    }
 });

@@ -3,7 +3,6 @@ $pink: #E11C52;
 $blue: #0F6ABB;
 $green: #008344;
 $magenta: #6F004B;
-
 body {
     padding: 80px 0 20px 0;
 }
@@ -74,8 +73,15 @@ svg {
     }
 }
 
-nav .glyphicon {
-    margin-right: 5px;
+nav {
+    & #search-button {
+        font-weight: bold;
+        padding-left: 10px;
+        padding-right: 6px;
+    }
+    & .glyphicon {
+        margin-right: 5px;
+    }
 }
 
 footer {
@@ -107,11 +113,15 @@ footer {
     text-align: center;
 }
 
+.popover {
+    white-space: pre-wrap;    
+}
+
 @media (max-width: 500px) {
     svg {
         margin-top: 25px;
-            transform: rotate(-90deg);
-            height: 100%;
-            width: auto;
+        transform: rotate(-90deg);
+        height: 100%;
+        width: auto;
     }
 }
