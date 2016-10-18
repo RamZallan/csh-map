@@ -157,10 +157,11 @@ $('#search-button').click(function(e) {
     query = $('#search').val().replace(/\s+/g, '-').toLowerCase();
     var bldg = query.match(regexBldg),
         num = query.match(regexNum);
-        console.log(bldg, num);
-    if (bldg == "nrh" || bldg == "fish") {
+        id = ('#' + bldg + "-3-" + num).toString();  // Concatenates the bldg name and room num to a searcheable ID
+  console.log(id);
+    if ((bldg == "nrh" || bldg == "fish") && ($(id).length)) {  // Checks if the building is NRH/Fish, and if the room exists on the map
+        nrhOrFish(query); 
         $('#map-modal').modal('show');
-        nrhOrFish(query);
     }
     else {
         $('#search').attr('data-content', 'Room not found.\nExample searches: NRH 3071, Fish 3050').popover('show').popover('disable');
