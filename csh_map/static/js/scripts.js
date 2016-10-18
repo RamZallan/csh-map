@@ -152,7 +152,8 @@ $('.room').click(function() {
 });
 
 
-$('#search-button').click(function() {
+$('#search-button').click(function(e) {
+    e.preventDefault();
     query = $('#search').val().replace(/\s+/g, '-').toLowerCase();
     var bldg = query.match(regexBldg),
         num = query.match(regexNum);
