@@ -48,7 +48,7 @@ function updateResidents(roomNum) {
         case "3058":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Lounge");
-            updateModalBody('AJ Mandula\'s "A Perfect Lounge"');
+            updateModalBody("No residents.");
             break;
         case "3098":
             $modalTitle.css('textTransform', 'capitalize');
@@ -56,19 +56,49 @@ function updateResidents(roomNum) {
             updateModalBody("No residents.");
             break;
         case "3034":
-            $modalTitle.css('textTransform', 'capitalize');
-            updateModalTitle("Server Room");
-            updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow<br>James Forcier");
-            break;
-            $modalTitle.css('textTransform', 'capitalize');
         case "3048":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Server Room");
-            updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow<br>James Forcier");
+            updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow<br>James Forcier<br>Steven Mirabito");
+            break;
+        case "3021":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Project Room");
+            updateModalBody("Zach Hart");
+            break;
+        case "3017":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Research Room");
+            updateModalBody("Trevor Sherrard<br>Spencer Kulbacki<br>Marc Billow<br>Drew Gottlieb<br>Colin O'Neill<br>Maxime Bourgeois");
             break;
         case "3012":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Luser Center");
+            updateModalBody("No residents.");
+            break;
+        case "3032":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Eboard Closet");
+            updateModalBody("Andrew Closet");
+            break;
+        case "3028":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Janitorial Closet");
+            updateModalBody("Mike");
+            break;
+        case "3008":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Social Closet");
+            updateModalBody("Rose Hacker");
+            break;
+        case "3120":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("SS Networking");
+            updateModalBody("ssn@csh.rit.edu");
+            break;
+        case "3124":
+            $modalTitle.css('textTransform', 'capitalize');
+            updateModalTitle("Software Room");
             updateModalBody("No residents.");
             break;
         case "3950":
@@ -158,12 +188,11 @@ $('#search-button').click(function(e) {
     var bldg = query.match(regexBldg),
         num = query.match(regexNum);
         id = ('#' + bldg + "-3-" + num).toString();  // Concatenates the bldg name and room num to a searcheable ID
-  console.log(id);
     if ((bldg == "nrh" || bldg == "fish") && ($(id).length)) {  // Checks if the building is NRH/Fish, and if the room exists on the map
         nrhOrFish(query); 
         $('#map-modal').modal('show');
     }
     else {
-        $('#search').attr('data-content', 'Room not found.\nExample searches: NRH 3071, Fish 3050').popover('show').popover('disable');
+        $('#search').attr('data-content', 'Room not found.\nExample searches: NRH 3071, Fish 3049').popover('show').popover('disable');
     }
 });
