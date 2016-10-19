@@ -14,7 +14,7 @@ LDAP_BIND_PW=os.environ.get('MAP_LDAP_BIND_PW', '')
 LDAP_USER_OU=os.environ.get('MAP_LDAP_USER_OU', 'ou=Users,dc=csh,dc=rit,dc=edu')
 
 # OpenID Connect SSO config
-OIDC_ISSUER = os.environ.get('MAP_OIDC_ISSUER', 'https://sso.csh.rit.edu/auth/realms/csh')
+OIDC_ISSUER = os.environ.get('MAP_OIDC_ISSUER', 'https://sso.csh.rit.edu/realms/csh')
 OIDC_CLIENT_CONFIG = {
     'client_id': os.environ.get('MAP_OIDC_CLIENT_ID', 'map'),
     'client_secret': os.environ.get('MAP_OIDC_CLIENT_SECRET', ''),
