@@ -12,7 +12,7 @@ LDAP_BIND_PW = 'lolno'
 LDAP_USER_OU = 'ou=Users,dc=csh,dc=rit,dc=edu'
 
 # OpenID Connect SSO config
-OIDC_ISSUER = 'https://sso.csh.rit.edu/auth/realms/csh'
+OIDC_ISSUER = 'https://sso.csh.rit.edu/realms/csh'
 OIDC_CLIENT_CONFIG = {
     'client_id': 'map',
     'client_secret': 'lolno',
