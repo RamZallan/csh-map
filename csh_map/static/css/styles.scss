@@ -36,8 +36,10 @@ body {
 }
 
 svg {
-    width: 100%;
+    display: block;
+    width: 98%;
     height: auto;
+    margin: 0 auto;
     max-height: 80vh;
     transition: 0.3s transform;
 }
