@@ -20,3 +20,5 @@ OIDC_CLIENT_CONFIG = {
     'client_secret': os.environ.get('MAP_OIDC_CLIENT_SECRET', ''),
     'post_logout_redirect_uris': [os.environ.get('MAP_OIDC_LOGOUT_REDIRECT_URI', 'https://map.csh.rit.edu/logout')]
 }
+
+PLUG_SUPPORT = os.environ.get('PLUG_ENABLED', 'False') == 'True'
