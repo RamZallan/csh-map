@@ -18,3 +18,5 @@ OIDC_CLIENT_CONFIG = {
     'client_secret': 'lolno',
     'post_logout_redirect_uris': ['http://localhost:8080/logout']
 }
+
+PLUG_SUPPORT = False
