@@ -158,7 +158,6 @@
                         <path id="fish-3-3048" class="room" data-toggle="modal" data-target="#map-modal" d="M4083.8-458h153v161h-153z" />
                     </g>
                 </svg>
-
             </div>
         </div>
         {% if config['PLUG_SUPPORT'] %}
@@ -173,6 +172,9 @@
         <footer>Ram - <a href="http://github.com/ramzallan/csh-map">Map</a>
         </footer>
     </div>
+    <script type="text/javascript">
+      var onfloors = {{ onfloors | safe }};
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../static/js/scripts.js"></script>

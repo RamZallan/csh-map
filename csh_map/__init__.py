@@ -1,7 +1,7 @@
 import os
 import requests
 from flask import Flask, jsonify, render_template, redirect, url_for, session
-from csh_map.ldap import ldap_init, get_occupants
+from csh_map.ldap import ldap_init, get_onfloors, get_eboard, get_groups
 from flask_pyoidc.flask_pyoidc import OIDCAuthentication
 
 app = Flask(__name__)
@@ -20,24 +20,13 @@ auth = OIDCAuthentication(app,
                           client_registration_info=app.config['OIDC_CLIENT_CONFIG'])
 
 
-@app.route('/<path:path>')
-def static_proxy(path):
-    # send_static_file will guess the correct MIME type
-    return app.send_static_file(path)
-
-
 @app.route("/")
 @auth.oidc_auth
 def index():
     return render_template('index.html',
                            username=session['userinfo'].get('preferred_username', ''),
-                           display_name=session['userinfo'].get('name', 'CSH Member'))
-
-
-@app.route("/get/<roomNumber>")
-@auth.oidc_auth
-def get(roomNumber):
-    return jsonify(get_occupants(app, roomNumber))
+                           display_name=session['userinfo'].get('name', 'CSH Member'),
+                           onfloors=get_onfloors(app))
 
 
 @app.route('/logout')

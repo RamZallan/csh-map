@@ -25,21 +25,9 @@ function updateModalBody(html) {
     $modalBody.html("<p>" + html + "</p>");
 }
 
-function getResidents(room, callback) {
-    /*
-    Takes in room (NRH 3071 => "3071", Fish 3050 => "F%203050"),
-    makes API call, and uses callback when called to get data.
-    */
-    $.ajax({
-        type: 'GET',
-        url: "get/" + room,
-        dataType: 'json'
-    }).success(callback);
-}
-
 function updateResidents(roomNum) {
     /*
-    Uses getResidents() w/ room # formatted for API call
+    Uses onfloors w/ room # formatted for dictionary key
     to get and parse the given data. If room has 2 residents,
     2 are returned, with comma; if room has 1 resident, only
     one is returned; returns if room has no residents.
@@ -140,15 +128,14 @@ function updateResidents(roomNum) {
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Restroom");
         default:
-            getResidents(roomNum, function(data) {
-                if (data[1]) {
-                    updateModalBody(data[0] + '<br>' + data[1]);
-                } else if (data[0]) {
-                    updateModalBody(data[0]);
-                } else {
-                    updateModalBody('No residents.');
-                }
-            });
+            residents = onfloors[roomNum];
+            if (typeof(residents) == 'undefined') {
+              updateModalBody('No residents.');
+            } else if (residents[1]) {
+              updateModalBody(residents[0] + '<br>' + residents[1]);
+            } else {
+              updateModalBody(residents[0]);
+            }
             break;
     }
 }
@@ -171,7 +158,7 @@ function nrhOrFish(id) {
         $modalTitle.css('textTransform', 'capitalize');
         updateModalBody("Loading...");
         updateModalTitle(bldg + " " + num);
-        updateResidents('F%20' + num);
+        updateResidents('F ' + num);
     } else {
         console.log("ERROR: Room of id" + id + " is neither in NRH nor Fish");
     }
@@ -194,7 +181,7 @@ $('#search-button').click(function(e) {
         num = query.match(regexNum);
         id = ('#' + bldg + "-3-" + num).toString();  // Concatenates the bldg name and room num to a searcheable ID
     if ((bldg == "nrh" || bldg == "fish") && ($(id).length)) {  // Checks if the building is NRH/Fish, and if the room exists on the map
-        nrhOrFish(query); 
+        nrhOrFish(query);
         $('#map-modal').modal('show');
     }
     else {
