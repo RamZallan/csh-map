@@ -26,7 +26,9 @@ def index():
     return render_template('index.html',
                            username=session['userinfo'].get('preferred_username', ''),
                            display_name=session['userinfo'].get('name', 'CSH Member'),
-                           onfloors=get_onfloors(app))
+                           onfloors=get_onfloors(app),
+                           eboard=get_eboard(app),
+                           groups=get_groups(app))
 
 
 @app.route('/logout')

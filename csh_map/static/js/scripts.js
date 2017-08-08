@@ -47,17 +47,33 @@ function updateResidents(roomNum) {
         case "3048":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Server Room");
-            updateModalBody("Jordan Rodgers<br>Liam Middlebrook<br>Marc Billow<br>James Forcier<br>Steven Mirabito");
+            var rtps = groups['rtp'];
+            var rtpHTML = "";
+            for (var i = 0; i < rtps.length; i++) {
+              rtpHTML += rtps[i];
+              if (i < rtps.length - 1) {
+                rtpHTML += "<br>"
+              }
+            }
+            updateModalBody(rtpHTML);
             break;
         case "3021":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Project Room");
-            updateModalBody("Zach Hart");
+            updateModalBody(eboard['Improvements']);
             break;
         case "3017":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Research Room");
-            updateModalBody("Trevor Sherrard<br>Spencer Kulbacki<br>Marc Billow<br>Drew Gottlieb<br>Colin O'Neill<br>Maxime Bourgeois");
+            var threedeeayys = groups['3da'];
+            var threedeeayyHTML = "";
+            for (var i = 0; i < threedeeayys.length; i++) {
+              threedeeayyHTML += threedeeayys[i];
+              if (i < threedeeayys.length - 1) {
+                threedeeayyHTML += "<br>"
+              }
+            }
+            updateModalBody(threedeeayyHTML);
             break;
         case "3012":
             $modalTitle.css('textTransform', 'capitalize');
@@ -67,7 +83,7 @@ function updateResidents(roomNum) {
         case "3032":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Eboard Closet");
-            updateModalBody("Andrew Glaude");
+            updateModalBody(eboard['Financial']);
             break;
         case "3028":
             $modalTitle.css('textTransform', 'capitalize');
@@ -77,12 +93,12 @@ function updateResidents(roomNum) {
         case "3008":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Social Closet");
-            updateModalBody("Rose Hacker");
+            updateModalBody(eboard['Social']);
             break;
         case "3120":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("SS Networking");
-            updateModalBody("ssn@csh.rit.edu");
+            updateModalBody("<del>ssn@csh.rit.edu</del>");
             break;
         case "3124":
             $modalTitle.css('textTransform', 'capitalize');
@@ -97,17 +113,17 @@ function updateResidents(roomNum) {
         case "3080":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Trash Room");
-            updateModalBody("Marc Billow");
+            updateModalBody("No residents.");
             break;
         case "3078":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Library");
-            updateModalBody("Braden Bowdish");
+            updateModalBody(eboard['History']);
             break;
         case "3082":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Kitchen");
-            updateModalBody("Shawn Chowdhury");
+            updateModalBody("Brandon Chiu");
             break;
         case "F%203961":
         case "3961":
