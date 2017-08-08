@@ -114,7 +114,7 @@ footer {
 }
 
 .popover {
-    white-space: pre-wrap;    
+    white-space: pre-wrap;
 }
 
 @media (max-width: 500px) {
@@ -124,4 +124,9 @@ footer {
         height: 100%;
         width: auto;
     }
+}
+
+#plug {
+  margin-top: 20px;
+  width: 100%;
 }
