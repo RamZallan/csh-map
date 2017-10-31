@@ -1,6 +1,10 @@
 import ldap
 from ldap.ldapobject import ReconnectLDAPObject
 
+
+"""
+Inititalizes a connection to the LDAP server
+"""
 def ldap_init(app):
     app.config['LDAP_CONN'] = ReconnectLDAPObject(app.config['LDAP_URL'])
     app.config['LDAP_CONN'].simple_bind_s(
@@ -8,6 +12,12 @@ def ldap_init(app):
         app.config['LDAP_BIND_PW'])
 
 
+"""
+Queries the LDAP server to return a dictionary of
+CSHers on floor.
+:returns: dictionary where each room number (key)
+corresponds to a list of people living in the room.
+"""
 def get_onfloors(app):
     if app.config['LDAP_CONN'] is None:
         ldap_init(app)
@@ -42,6 +52,11 @@ def _get_cn_from_dns(app, dns):
     return [cn.decode('utf-8') for cn in cns[0][1]['cn']]
 
 
+"""
+Queries the LDAP server to return a dictinary of e-board
+members.
+:returns: dictionary of e-board directors
+"""
 def get_eboard(app):
     if app.config['LDAP_CONN'] is None:
         ldap_init(app)
@@ -57,6 +72,14 @@ def get_eboard(app):
         eboard[cn] = _get_cn_from_dns(app, head_dns)
     return eboard
 
+
+"""
+Queries the LDAP server to return a dictionary of group members,
+like RTP's and 3DA's
+:returns: dictionary of groups and members, where the key is 
+the name of the group ("rtp", "3da") and the value is a list
+of members in that group.
+"""
 def get_groups(app):
     if app.config['LDAP_CONN'] is None:
         ldap_init(app)
