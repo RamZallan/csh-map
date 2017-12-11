@@ -176,7 +176,7 @@ function nrhOrFish(id) {
         updateModalTitle(bldg + " " + num);
         updateResidents('F ' + num);
     } else {
-        console.log("ERROR: Room of id" + id + " is neither in NRH nor Fish");
+        console.log("ERROR: Room of id " + id + " is neither in NRH nor Fish");
     }
 }
 
