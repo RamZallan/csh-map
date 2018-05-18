@@ -26,7 +26,7 @@ def get_onfloors(app):
         app.config['LDAP_USER_OU'],
         ldap.SCOPE_SUBTREE,
         "(&(objectClass=houseMember)" +
-        "(memberof=cn=current_student,ou=Groups,dc=csh,dc=rit,dc=edu)" +
+        "(memberof=cn=current_student,cn=groups,cn=account,dc=csh,dc=rit,dc=edu" +
         "(roomNumber=*))",
         ['cn', 'roomNumber'])
     onfloors = {}
@@ -62,7 +62,7 @@ def get_eboard(app):
         ldap_init(app)
 
     ldap_results = app.config['LDAP_CONN'].search_s(
-        "ou=Committees,dc=csh,dc=rit,dc=edu",
+        "cn=committees,cn=groups,dc=csh,dc=rit,dc=edu",
         ldap.SCOPE_SUBTREE,
         "(objectClass=Committee)", ['cn', 'head'])
     eboard = {}
@@ -87,14 +87,14 @@ def get_groups(app):
     groups = {}
 
     rtp_results = app.config['LDAP_CONN'].search_s(
-        "ou=Groups,dc=csh,dc=rit,dc=edu",
+        "cn=groups,cn=account,dc=csh,dc=rit,dc=edu",
         ldap.SCOPE_SUBTREE,
         "(cn=active_rtp)")[0][1]['member']
     groups['rtp'] = [_get_cn_from_dns(app, [rtp.decode('utf-8')])[0]
         for rtp in rtp_results]
 
     threedeeayy_results = app.config['LDAP_CONN'].search_s(
-        "ou=Groups,dc=csh,dc=rit,dc=edu",
+        "cn=groups,cn=account,dc=csh,dc=rit,dc=edu",
         ldap.SCOPE_SUBTREE,
         "(cn=3da)")[0][1]['member']
     groups['3da'] = [_get_cn_from_dns(app, [admin.decode('utf-8')])[0]
