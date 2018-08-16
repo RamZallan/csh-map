@@ -1,76 +1,63 @@
-import ldap
-from ldap.ldapobject import ReconnectLDAPObject
+import csh_ldap
 
 
 """
-Inititalizes a connection to the LDAP server
+Returns a list of Common Names (i.e. "Ram Zallan") of members in a given group
+"""
+def _ldap_get_group_members(app, group):
+    return [member.cn for member in app.config['LDAP_CONN'].get_group(group).get_members()]
+
+
+"""
+Inititalizes a connection to the LDAP server using csh_ldap
 """
 def ldap_init(app):
-    app.config['LDAP_CONN'] = ReconnectLDAPObject(app.config['LDAP_URL'])
-    app.config['LDAP_CONN'].simple_bind_s(
-        app.config['LDAP_BIND_DN'],
-        app.config['LDAP_BIND_PW'])
+    app.config['LDAP_CONN'] = csh_ldap.CSHLDAP(app.config['LDAP_BIND_DN'], app.config['LDAP_BIND_PW'], ro=True)
+
 
 
 """
 Queries the LDAP server to return a dictionary of
 CSHers on floor.
 :returns: dictionary where each room number (key)
-corresponds to a list of people living in the room.
+corresponds to a list of CNs of people living in the room.
 """
 def get_onfloors(app):
     if app.config['LDAP_CONN'] is None:
         ldap_init(app)
 
-    ldap_results = app.config['LDAP_CONN'].search_s(
-        app.config['LDAP_USER_OU'],
-        ldap.SCOPE_SUBTREE,
-        "(&(objectClass=houseMember)" +
-        "(memberof=cn=current_student,cn=groups,cn=account,dc=csh,dc=rit,dc=edu" +
-        "(roomNumber=*))",
-        ['cn', 'roomNumber'])
-    onfloors = {}
-    for onfloor in ldap_results:
-        cn = onfloor[1]['cn'][0].decode('utf-8')
-        roomNumber = onfloor[1]['roomNumber'][0].decode('utf-8')
-        if roomNumber in onfloors:
-            onfloors[roomNumber] += [cn]
-        else:
-            onfloors[roomNumber] = [cn]
-    return onfloors
+    members = [member for member in app.config['LDAP_CONN'].get_group("current_student").get_members()]
 
+    parsed = dict()
 
-def _get_cn_from_dns(app, dns):
-    cns = []
-    for dn in dns:
-        dn = dn.split(',')[0]
-        cns += app.config['LDAP_CONN'].search_s(
-            app.config['LDAP_USER_OU'],
-            ldap.SCOPE_SUBTREE,
-            "(%s)" % dn,
-            ['cn'])
-    return [cn.decode('utf-8') for cn in cns[0][1]['cn']]
+    for member in members:
+        if member.roomNumber:
+            if member.roomNumber in parsed:
+                # one roommate already listed
+                parsed[member.roomNumber].append(member.cn)
+            else:
+                parsed[member.roomNumber] = [member.cn]
+
+    return parsed
 
 
 """
-Queries the LDAP server to return a dictinary of e-board
-members.
-:returns: dictionary of e-board directors
+Constructs a dictionary of form
+{ "Director Tilte": "Common Name of Director", ... }
+i.e. { "Chairman": "Dan Giaime", "Evaluations": "Devin Matte", ... }
 """
-def get_eboard(app):
-    if app.config['LDAP_CONN'] is None:
-        ldap_init(app)
-
-    ldap_results = app.config['LDAP_CONN'].search_s(
-        "cn=committees,cn=groups,dc=csh,dc=rit,dc=edu",
-        ldap.SCOPE_SUBTREE,
-        "(objectClass=Committee)", ['cn', 'head'])
-    eboard = {}
-    for director in ldap_results:
-        cn = director[1]['cn'][0].decode('utf-8')
-        head_dns = [dn.decode('utf-8') for dn in director[1]['head']]
-        eboard[cn] = _get_cn_from_dns(app, head_dns)
-    return eboard
+def _ldap_construct_eboard_dictionary(app):
+    return {
+        "Chairman": _ldap_get_group_members(app, "eboard-chairman"),
+        "Evaluations":_ldap_get_group_members(app, "eboard-evaluations"),
+        "Financial": _ldap_get_group_members(app, "eboard-financial"),
+        "History": _ldap_get_group_members(app, "eboard-history"),
+        "Improvements": _ldap_get_group_members(app, "eboard-imps"),
+        "Opcomm": _ldap_get_group_members(app, "eboard-opcomm"),
+        "R&D": _ldap_get_group_members(app, "eboard-research"),
+        "Social": _ldap_get_group_members(app, "eboard-social"),
+        "Secretary": _ldap_get_group_members(app, "eboard-secretary")
+    }
 
 
 """
@@ -86,18 +73,10 @@ def get_groups(app):
 
     groups = {}
 
-    rtp_results = app.config['LDAP_CONN'].search_s(
-        "cn=groups,cn=account,dc=csh,dc=rit,dc=edu",
-        ldap.SCOPE_SUBTREE,
-        "(cn=active_rtp)")[0][1]['member']
-    groups['rtp'] = [_get_cn_from_dns(app, [rtp.decode('utf-8')])[0]
-        for rtp in rtp_results]
+    groups['rtp'] = _ldap_get_group_members(app, "active_rtp")
 
-    threedeeayy_results = app.config['LDAP_CONN'].search_s(
-        "cn=groups,cn=account,dc=csh,dc=rit,dc=edu",
-        ldap.SCOPE_SUBTREE,
-        "(cn=3da)")[0][1]['member']
-    groups['3da'] = [_get_cn_from_dns(app, [admin.decode('utf-8')])[0]
-        for admin in threedeeayy_results]
+    groups['3da'] = _ldap_get_group_members(app, "3da")
+
+    groups['eboard'] = _ldap_construct_eboard_dictionary(app)
 
     return groups

@@ -1,7 +1,7 @@
 import os
 import requests
 from flask import Flask, jsonify, render_template, redirect, url_for, session
-from csh_map.ldap import ldap_init, get_onfloors, get_eboard, get_groups
+from csh_map.ldap import ldap_init, get_onfloors, get_groups
 from flask_pyoidc.flask_pyoidc import OIDCAuthentication
 
 app = Flask(__name__)
@@ -27,7 +27,6 @@ def index():
                            username=session['userinfo'].get('preferred_username', ''),
                            display_name=session['userinfo'].get('name', 'CSH Member'),
                            onfloors=get_onfloors(app),
-                           eboard=get_eboard(app),
                            groups=get_groups(app))
 
 

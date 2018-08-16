@@ -1,22 +1,21 @@
 # Flask config
-DEBUG = False
+DEBUG = True
 IP = '127.0.0.1'
-PORT = '8080'
-SERVER_NAME = 'localhost:8080'
-SECRET_KEY = 'thisisntverysecure'
+PORT = '6969'
+SERVER_NAME = 'localhost:6969'
+SECRET_KEY = ''
 
 # LDAP config
-LDAP_URL = 'ldaps://ldap.csh.rit.edu:636'
-LDAP_BIND_DN = 'cn=map,ou=Apps,dc=csh,dc=rit,dc=edu'
-LDAP_BIND_PW = 'lolno'
-LDAP_USER_OU = 'ou=Users,dc=csh,dc=rit,dc=edu'
+LDAP_URL = 'ldaps://stone.csh.rit.edu'
+LDAP_BIND_DN = 'krbprincipalname=map/os-router-nrh.csh.rit.edu@CSH.RIT.EDU,cn=services,cn=accounts,dc=csh,dc=rit,dc=edu'
+LDAP_BIND_PW = ''
 
 # OpenID Connect SSO config
-OIDC_ISSUER = 'https://sso.csh.rit.edu/realms/csh'
+OIDC_ISSUER = 'https://sso.csh.rit.edu/auth/realms/csh'
 OIDC_CLIENT_CONFIG = {
     'client_id': 'map',
-    'client_secret': 'lolno',
-    'post_logout_redirect_uris': ['http://localhost:8080/logout']
+    'client_secret': '',
+    'post_logout_redirect_uris': ['localhost:6969/logout']
 }
 
 PLUG_SUPPORT = False

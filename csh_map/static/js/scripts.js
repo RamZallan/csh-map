@@ -60,7 +60,7 @@ function updateResidents(roomNum) {
         case "3021":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Project Room");
-            updateModalBody(eboard['Improvements']);
+            updateModalBody(groups['eboard']['Improvements']);
             break;
         case "3017":
             $modalTitle.css('textTransform', 'capitalize');
@@ -83,7 +83,7 @@ function updateResidents(roomNum) {
         case "3032":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Eboard Closet");
-            updateModalBody(eboard['Financial']);
+            updateModalBody(groups['eboard']['Financial']);
             break;
         case "3028":
             $modalTitle.css('textTransform', 'capitalize');
@@ -93,7 +93,13 @@ function updateResidents(roomNum) {
         case "3008":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Social Closet");
-            updateModalBody(eboard['Social']);
+            let social = groups['eboard']['Social'];
+            if (social[1]) {
+                // dual directorship
+                updateModalBody(social[0] + '<br>' + social[1]);
+            } else {
+                updateModalBody(social[0]);
+            }
             break;
         case "3120":
             $modalTitle.css('textTransform', 'capitalize');
@@ -113,12 +119,12 @@ function updateResidents(roomNum) {
         case "3080":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Trash Room");
-            updateModalBody("No residents.");
+            updateModalBody("Ram Zallan");
             break;
         case "3078":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Library");
-            updateModalBody(eboard['History']);
+            updateModalBody(groups['eboard']['History']);
             break;
         case "3082":
             $modalTitle.css('textTransform', 'capitalize');
@@ -133,8 +139,8 @@ function updateResidents(roomNum) {
             updateModalTitle("Staircase");
             updateModalBody("No residents.");
             break;
-        case "F%203023":
-        case "F%203018":
+        case "F 3023":
+        case "F 3018":
         case "3047":
         case "3025":
         case "3075":
