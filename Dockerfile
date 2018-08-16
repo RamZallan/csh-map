@@ -2,7 +2,7 @@ FROM python:3-alpine
 MAINTAINER Ram Zallan (ram@csh.rit.edu)
 
 # Install additional system packages required for certain python dependencies
-RUN apk add --no-cache postgresql-dev libffi-dev python-dev gcc musl-dev openssl-dev openldap-dev ca-certificates && \
+RUN apk add --no-cache postgresql-dev libffi-dev python-dev gcc musl-dev libressl-dev openldap-dev ca-certificates && \
 update-ca-certificates
 
 # Configure OpenLDAP to use the system trusted CA Store
