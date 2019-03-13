@@ -129,7 +129,7 @@ function updateResidents(roomNum) {
         case "3082":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Kitchen");
-            updateModalBody("Brandon Chiu");
+            updateModalBody("Dyllon Chowdhury");
             break;
         case "F%203961":
         case "3961":
