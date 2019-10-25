@@ -88,7 +88,7 @@ function updateResidents(roomNum) {
         case "3028":
             $modalTitle.css('textTransform', 'capitalize');
             updateModalTitle("Janitorial Closet");
-            updateModalBody("Mike");
+            updateModalBody("Marilyn");
             break;
         case "3008":
             $modalTitle.css('textTransform', 'capitalize');
