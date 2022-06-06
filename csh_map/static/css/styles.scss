@@ -23,9 +23,6 @@ body {
         &#legend-nrh {
             background: $purple;
         }
-        &#legend-fish {
-            background: $blue;
-        }
         &#legend-staircases {
             background: $green;
         }
@@ -58,18 +55,6 @@ svg {
     }
     &:hover {
         opacity: 1;
-    }
-}
-
-#fish {
-    & .room {
-        fill: $blue;
-        &.bathroom {
-            fill: $pink;
-        }
-        &.staircase {
-            fill: $green;
-        }
     }
 }
 
