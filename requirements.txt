@@ -3,3 +3,4 @@ pyldap
 Flask-pyoidc
 gunicorn
 csh_ldap
+pylint
