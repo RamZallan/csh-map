@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM docker.io/python:3.7.0-alpine3.8
 MAINTAINER Ram Zallan (ram@csh.rit.edu)
 
 # Install additional system packages required for certain python dependencies
