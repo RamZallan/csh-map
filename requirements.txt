@@ -25,7 +25,7 @@ pycryptodomex==3.6.5
 pyjwkest==1.4.0
 pyldap==3.0.0.post1
 pyOpenSSL==18.0.0
-python-ldap==3.1.0
+python-ldap==3.4.0
 requests==2.19.1
 six==1.11.0
 srvlookup==2.0.0
